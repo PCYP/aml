@@ -1,0 +1,22 @@
+<h1>Create Account</h1>
+{% if user %}
+    <p>Account created!</p>
+    <p>Username: {{ user.username }}</p>
+    <p>Access Level: {{ user.access_level }}</p>
+{% else %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+        <label for="access_level">Access Level:</label>
+        <select name="access_level" id="access_level">
+            <option value="1">Read</option>
+            <option value="2">Write</option>
+            <option value="3">Download</option>
+            <option value="4">Upload</option>
+        </select>
+        <input type="submit" value="Create">
+    </form>
+{% endif %}

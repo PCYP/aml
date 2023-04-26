@@ -1,0 +1,18 @@
+<h1>Log In</h1>
+{% if error %}
+    <p>{{ error }}</p>
+{% endif %}
+{% if user %}
+    <p>Logged in!</p>
+    <p>Username: {{ user.username }}</p>
+    <p>Access Level: {{ user.access_level }}</p>
+{% else %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password">
+        <input type="submit" value="Log In">
+    </form>
+{% endif %}

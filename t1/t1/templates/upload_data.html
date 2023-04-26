@@ -1,0 +1,21 @@
+<h1>Upload Data</h1>
+{% if data %}
+    <p>Data uploaded!</p>
+    <p>Data: {{ data.data }}</p>
+    <p>Tags: {{ data.tags }}</p>
+{% else %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <label for="user">User:</label>
+        <select name="user" id="user">
+            {% for user in users %}
+                <option value="{{ user.id }}">{{ user.username }}</option>
+            {% endfor %}
+        </select>
+        <label for="data">Data:</label>
+        <textarea name="data" id="data"></textarea>
+        <label for="tags">Tags:</label>
+        <input type="text" name="tags" id="tags">
+        <input type="submit" value="Upload">
+    </form>
+{% endif %}
